@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunscream suggestion app</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("/images/bg2.jpg");
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "one titan",sans-serif;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(10px);
+            /* padding: 30px; */
+            border: 2px solid green;
+            border-radius: 25px;
+            color: black;
+            height: 300px;
+            width: 800px;
+        }
+
+        .location {
+            padding: 10px;
+        }
+
+        .location > form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .location label{
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .location input{
+
+            padding: 8px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .progressBar-container{
+            justify-content: center;
+            align-items: center;
+            height: 25px;
+            width: 500px;
+            background-color: white;
+            border-radius: 8px;
+            margin: 10px;
+
+        }
+
+        .progressBar{
+            height: 100%;
+            background-color: purple;
+            border-radius: 8px;
+        }
+
+        #submitbtn{
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            padding: 8px 20px;
+        }
+
+        .suggestion{
+            text-align: center;
+        }
+
+        .preSuggestionText{
+            margin: 10px 0px;
+        }
+
+        .inputBox1,.inputBox2{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inputBox2{
+            margin-left: 10px;
+        }
+
+        .inputBox-container{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="location">
+            <form method="post" action="/openuv">
+                <div class="inputBox-container">
+                    <div class="inputBox1">
+                        <label for="longitude">Longitude</label>
+                        <input type="number" name="longitude" step="any">
+                    </div>
+                    <div class="inputBox2">
+                        <label for="latitude">Latitude</label>
+                        <input type="number" name="latitude" step="any">
+                    </div>
+                </div>
+                <input id="submitbtn" type="submit" value="Letz see">
+            </form>
+        </div>
+
+        <div class="progressBar-container">
+            <div class="progressBar"></div>
+        </div>
+
+        <% if(locals.suggestionText){ %>
+            <p class="preSuggestionText">suggestion for Indians</p>
+            <h3 class="suggestion"><%= suggestionText %></h3>
+        <% } else { %>
+            <p class="suggestion">suggestions are on the way.</p>
+        <% } %>
+
+    </div>
+</body>
+</html>
